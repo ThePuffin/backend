@@ -4,15 +4,18 @@
 // import type { GameFormatted } from "../interface/game.ts";
 // import type { NHLGameAPI } from "../../interface/gameNHL";
 import { CreateTeamDto } from '../../teams/dto/create-team.dto';
-import type { TeamNHL, TeamType } from '../../utils/interface/team';
 import { TeamService } from '../../teams/teams.service';
+import type { TeamNHL, TeamType } from '../../utils/interface/team';
 // import { getHourGame, isExpiredData } from "../utils/date.js";
+import { Model, model } from 'mongoose';
+import { Team, TeamSchema } from 'src/teams/schemas/team.schema';
 import { League } from '../../utils/enum';
 const leagueName = League.NHL;
 // const { NODE_ENV } = process.env;
-
 export const getNhlTeams = async () => {
-  const teamService = new TeamService();
+  const teamModel: Model<Team> = model('Team', TeamSchema);
+
+  const teamService = new TeamService(teamModel);
   try {
     // const nhlTeams = await db
     //   .select()
@@ -52,11 +55,11 @@ export const getNhlTeams = async () => {
           conferenceName,
         } = team;
         const teamID = teamAbbrev.default;
-        const uniqueId = `${leagueName}-${teamID}`;
-        let teamToInsert = new CreateTeamDto();
-        const activeTeam = {
-          uniqueId,
-          value: uniqueId,
+        const _id = `${leagueName}-${teamID}`;
+
+        return {
+          _id,
+          value: _id,
           id: teamID,
           abbrev: teamID,
           label: teamName?.default,
@@ -67,25 +70,27 @@ export const getNhlTeams = async () => {
           league: leagueName,
           updateDate: new Date().toDateString(),
         };
-        // console.log(teamToInsert);
-        teamToInsert = { ...activeTeam };
-        console.log('updated allTeamsNHL.json', teamToInsert);
-
-        teamService.create(teamToInsert);
-        return teamToInsert;
       });
+    console.log('teams number !!!!', activeTeams.length);
+
+    for (const activeTeam of activeTeams) {
+      let teamToInsert = new CreateTeamDto();
+      teamToInsert = { ...activeTeam };
+      await teamService.create(teamToInsert);
+      console.log('updated =>', teamToInsert.label);
+    }
     // if (NODE_ENV === "development") {
     //   await writeJsonFile("./temporaryData/allTeamsNHL.json", { activeTeams });
     // }
 
     // activeTeams.forEach(async (team: TeamType) => {
-    //   const { uniqueId, ...teamData } = team;
+    //   const { _id, ...teamData } = team;
 
     //   await db
     //     .insert(Teams)
     //     .values({ ...team })
     //     .onConflictDoUpdate({
-    //       target: Teams.uniqueId,
+    //       target: Teams._id,
     //       set: {
     //         ...teamData,
     //       },
@@ -187,7 +192,7 @@ export const getNhlTeams = async () => {
 
 //       if (new Date(gameDate) < now) return;
 //       return {
-//         uniqueId: `${leagueName}.${id}.${game.gameDate}`,
+//         _id: `${leagueName}.${id}.${game.gameDate}`,
 //         awayTeamId: awayTeam.abbrev,
 //         awayTeam: awayTeam.placeName.default,
 //         homeTeam: homeTeam.placeName.default,
@@ -207,12 +212,12 @@ export const getNhlTeams = async () => {
 
 //     gamesData = gamesData.filter((game) => game !== undefined && game !== null);
 //     gamesData.forEach(async (gameTeam: GameFormatted) => {
-//       const { uniqueId, ...gameData } = gameTeam;
+//       const { _id, ...gameData } = gameTeam;
 //       await db
 //         .insert(Games)
 //         .values({ ...gameTeam })
 //         .onConflictDoUpdate({
-//           target: Games.uniqueId,
+//           target: Games._id,
 //           set: {
 //             ...gameData,
 //           },

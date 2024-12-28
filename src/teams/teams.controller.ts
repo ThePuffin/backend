@@ -1,7 +1,7 @@
 import { Controller, Get, Patch, Delete, Body, Param } from '@nestjs/common';
 import { TeamService } from './teams.service';
 import { TeamType } from '../utils/interface/team';
-import {UpdateTeamDto} from './dto/update-team.dto'
+import { UpdateTeamDto } from './dto/update-team.dto';
 
 @Controller('teams')
 export class TeamsController {
@@ -12,9 +12,9 @@ export class TeamsController {
     return this.TeamService.findAll();
   }
 
-  @Get(':uniqueId')
-  findOne(@Param('uniqueId') uniqueId: string) {
-    return this.TeamService.findOne(uniqueId);
+  @Get(':_id')
+  findOne(@Param('_id') _id: string) {
+    return this.TeamService.findOne(_id);
   }
 
   @Patch(':id')

@@ -10,18 +10,27 @@ import { UpdateTeamDto } from './dto/update-team.dto';
 export class TeamService {
   constructor(@InjectModel(Team.name) public teamModel: Model<Team>) {}
 
-  async create(createTeamDto: CreateTeamDto): Promise<Team> {
-    const createdTeam = new this.teamModel(createTeamDto);
-    return createdTeam.save();
+  async create(teamDto: CreateTeamDto | UpdateTeamDto): Promise<Team> {
+    const { _id } = teamDto;
+
+    if (_id) {
+      const existingTeam = await this.teamModel.findOne({ _id });
+      if (existingTeam) {
+        return this.teamModel.save({ ...existingTeam, ...teamDto });
+      }
+    }
+
+    const newTeam = this.teamModel.create(teamDto);
+    return await this.teamModel.save(newTeam);
   }
 
   async findAll(): Promise<Team[]> {
     return this.teamModel.find().exec();
   }
 
-  findOne(uniqueId: string) {
-    console.log('uniqueId', uniqueId);
-    const filter = { uniqueId: uniqueId };
+  findOne(_id: string) {
+    console.log('_id', _id);
+    const filter = { _id: _id };
     return this.teamModel.findOne(filter).exec();
   }
 

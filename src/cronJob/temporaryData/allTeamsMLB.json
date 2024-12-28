@@ -1,7 +1,7 @@
 {
 	"activeTeams": [
 		{
-			"uniqueId": "MLB-ARI",
+			"_id": "MLB-ARI",
 			"value": "MLB-ARI",
 			"id": "29",
 			"abbrev": "ARI",
@@ -13,7 +13,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-ATL",
+			"_idLB-ATL",
 			"value": "MLB-ATL",
 			"id": "15",
 			"abbrev": "ATL",
@@ -25,7 +25,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-BAL",
+			"_idLB-BAL",
 			"value": "MLB-BAL",
 			"id": "1",
 			"abbrev": "BAL",
@@ -37,7 +37,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-BOS",
+			"_idLB-BOS",
 			"value": "MLB-BOS",
 			"id": "2",
 			"abbrev": "BOS",
@@ -49,7 +49,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-CHC",
+			"_idLB-CHC",
 			"value": "MLB-CHC",
 			"id": "16",
 			"abbrev": "CHC",
@@ -61,7 +61,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-CHW",
+			"_idLB-CHW",
 			"value": "MLB-CHW",
 			"id": "4",
 			"abbrev": "CHW",
@@ -73,7 +73,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-CIN",
+			"_idLB-CIN",
 			"value": "MLB-CIN",
 			"id": "17",
 			"abbrev": "CIN",
@@ -85,7 +85,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-CLE",
+			"_idLB-CLE",
 			"value": "MLB-CLE",
 			"id": "5",
 			"abbrev": "CLE",
@@ -97,7 +97,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-COL",
+			"_idLB-COL",
 			"value": "MLB-COL",
 			"id": "27",
 			"abbrev": "COL",
@@ -109,7 +109,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-DET",
+			"_idLB-DET",
 			"value": "MLB-DET",
 			"id": "6",
 			"abbrev": "DET",
@@ -121,7 +121,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-HOU",
+			"_idLB-HOU",
 			"value": "MLB-HOU",
 			"id": "18",
 			"abbrev": "HOU",
@@ -133,7 +133,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-KC",
+			"_idLB-KC",
 			"value": "MLB-KC",
 			"id": "7",
 			"abbrev": "KC",
@@ -145,7 +145,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-LAA",
+			"_idLB-LAA",
 			"value": "MLB-LAA",
 			"id": "3",
 			"abbrev": "LAA",
@@ -157,7 +157,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-LAD",
+			"_idLB-LAD",
 			"value": "MLB-LAD",
 			"id": "19",
 			"abbrev": "LAD",
@@ -169,7 +169,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-MIA",
+			"_idLB-MIA",
 			"value": "MLB-MIA",
 			"id": "28",
 			"abbrev": "MIA",
@@ -181,7 +181,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-MIL",
+			"_idLB-MIL",
 			"value": "MLB-MIL",
 			"id": "8",
 			"abbrev": "MIL",
@@ -193,7 +193,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-MIN",
+			"_idLB-MIN",
 			"value": "MLB-MIN",
 			"id": "9",
 			"abbrev": "MIN",
@@ -205,7 +205,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-NYM",
+			"_idLB-NYM",
 			"value": "MLB-NYM",
 			"id": "21",
 			"abbrev": "NYM",
@@ -217,7 +217,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-NYY",
+			"_idLB-NYY",
 			"value": "MLB-NYY",
 			"id": "10",
 			"abbrev": "NYY",
@@ -229,7 +229,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-OAK",
+			"_idLB-OAK",
 			"value": "MLB-OAK",
 			"id": "11",
 			"abbrev": "OAK",
@@ -241,7 +241,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-PHI",
+			"_idLB-PHI",
 			"value": "MLB-PHI",
 			"id": "22",
 			"abbrev": "PHI",
@@ -253,7 +253,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-PIT",
+			"_idLB-PIT",
 			"value": "MLB-PIT",
 			"id": "23",
 			"abbrev": "PIT",
@@ -265,7 +265,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-SD",
+			"_idLB-SD",
 			"value": "MLB-SD",
 			"id": "25",
 			"abbrev": "SD",
@@ -277,7 +277,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-SF",
+			"_idLB-SF",
 			"value": "MLB-SF",
 			"id": "26",
 			"abbrev": "SF",
@@ -289,7 +289,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-SEA",
+			"_idLB-SEA",
 			"value": "MLB-SEA",
 			"id": "12",
 			"abbrev": "SEA",
@@ -301,7 +301,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-STL",
+			"_idLB-STL",
 			"value": "MLB-STL",
 			"id": "24",
 			"abbrev": "STL",
@@ -313,7 +313,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-TB",
+			"_idLB-TB",
 			"value": "MLB-TB",
 			"id": "30",
 			"abbrev": "TB",
@@ -325,7 +325,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-TEX",
+			"_idLB-TEX",
 			"value": "MLB-TEX",
 			"id": "13",
 			"abbrev": "TEX",
@@ -337,7 +337,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-TOR",
+			"_idLB-TOR",
 			"value": "MLB-TOR",
 			"id": "14",
 			"abbrev": "TOR",
@@ -349,7 +349,7 @@
 			"league": "MLB"
 		},
 		{
-			"uniqueId": "MLB-WSH",
+			"_idLB-WSH",
 			"value": "MLB-WSH",
 			"id": "20",
 			"abbrev": "WSH",

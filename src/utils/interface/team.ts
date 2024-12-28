@@ -1,6 +1,5 @@
 export interface TeamType {
   _id: string;
-  uniqueId: string;
   value: string;
   id: string;
   label: string;

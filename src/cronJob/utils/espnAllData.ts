@@ -56,10 +56,10 @@
 //       .map(({ team }) => {
 //         const { abbreviation, displayName, logos, nickname, id } = team;
 //         const teamID = abbreviation;
-//         const uniqueId = `${leagueName}-${teamID}`;
+//         const _id = `${leagueName}-${teamID}`;
 //         return {
-//           uniqueId,
-//           value: uniqueId,
+//           _id
+//           value: _id
 //           id: id,
 //           abbrev: teamID,
 //           label: displayName,
@@ -79,13 +79,13 @@
 //     }
 
 //     activeTeams.forEach(async (team: TeamType) => {
-//       const { uniqueId, ...teamData } = team;
+//       const { _idteamData } = team;
 
 //       await db
 //         .insert(Teams)
 //         .values({ ...team })
 //         .onConflictDoUpdate({
-//           target: Teams.uniqueId,
+//           target: Teams._id
 //           set: {
 //             ...teamData,
 //           },
@@ -187,7 +187,7 @@
 //         const homeTeam = competitors.find((team) => team.homeAway === 'home');
 //         number++;
 //         return {
-//           uniqueId: `${leagueName}.${id}.${gameDate}.${number}`,
+//           _idleagueName}.${id}.${gameDate}.${number}`,
 //           arenaName: venue?.fullName || '',
 //           awayTeamId: awayTeam.team.abbreviation,
 //           awayTeam: awayTeam.team.displayName,
@@ -208,12 +208,12 @@
 
 //     gamesData = gamesData.filter((game) => game !== undefined && game !== null);
 //     gamesData.forEach(async (gameTeam: GameFormatted) => {
-//       const { uniqueId, ...gameData } = gameTeam;
+//       const { _idgameData } = gameTeam;
 //       await db
 //         .insert(Games)
 //         .values({ ...gameTeam })
 //         .onConflictDoUpdate({
-//           target: Games.uniqueId,
+//           target: Games._id
 //           set: {
 //             ...gameData,
 //           },

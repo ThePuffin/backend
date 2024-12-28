@@ -1,6 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class UpdateTeamDto {
+  @ApiProperty()
+  _id: string;
 
   @ApiProperty()
   value: string;

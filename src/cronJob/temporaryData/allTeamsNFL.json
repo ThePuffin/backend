@@ -1,7 +1,7 @@
 {
 	"activeTeams": [
 		{
-			"uniqueId": "NFL-ARI",
+			"_id": "NFL-ARI",
 			"value": "NFL-ARI",
 			"id": "22",
 			"abbrev": "ARI",
@@ -13,7 +13,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-ATL",
+			"_idFL-ATL",
 			"value": "NFL-ATL",
 			"id": "1",
 			"abbrev": "ATL",
@@ -25,7 +25,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-BAL",
+			"_idFL-BAL",
 			"value": "NFL-BAL",
 			"id": "33",
 			"abbrev": "BAL",
@@ -37,7 +37,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-BUF",
+			"_idFL-BUF",
 			"value": "NFL-BUF",
 			"id": "2",
 			"abbrev": "BUF",
@@ -49,7 +49,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-CAR",
+			"_idFL-CAR",
 			"value": "NFL-CAR",
 			"id": "29",
 			"abbrev": "CAR",
@@ -61,7 +61,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-CHI",
+			"_idFL-CHI",
 			"value": "NFL-CHI",
 			"id": "3",
 			"abbrev": "CHI",
@@ -73,7 +73,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-CIN",
+			"_idFL-CIN",
 			"value": "NFL-CIN",
 			"id": "4",
 			"abbrev": "CIN",
@@ -85,7 +85,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-CLE",
+			"_idFL-CLE",
 			"value": "NFL-CLE",
 			"id": "5",
 			"abbrev": "CLE",
@@ -97,7 +97,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-DAL",
+			"_idFL-DAL",
 			"value": "NFL-DAL",
 			"id": "6",
 			"abbrev": "DAL",
@@ -109,7 +109,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-DEN",
+			"_idFL-DEN",
 			"value": "NFL-DEN",
 			"id": "7",
 			"abbrev": "DEN",
@@ -121,7 +121,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-DET",
+			"_idFL-DET",
 			"value": "NFL-DET",
 			"id": "8",
 			"abbrev": "DET",
@@ -133,7 +133,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-GB",
+			"_idFL-GB",
 			"value": "NFL-GB",
 			"id": "9",
 			"abbrev": "GB",
@@ -145,7 +145,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-HOU",
+			"_idFL-HOU",
 			"value": "NFL-HOU",
 			"id": "34",
 			"abbrev": "HOU",
@@ -157,7 +157,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-IND",
+			"_idFL-IND",
 			"value": "NFL-IND",
 			"id": "11",
 			"abbrev": "IND",
@@ -169,7 +169,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-JAX",
+			"_idFL-JAX",
 			"value": "NFL-JAX",
 			"id": "30",
 			"abbrev": "JAX",
@@ -181,7 +181,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-KC",
+			"_idFL-KC",
 			"value": "NFL-KC",
 			"id": "12",
 			"abbrev": "KC",
@@ -193,7 +193,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-LV",
+			"_idFL-LV",
 			"value": "NFL-LV",
 			"id": "13",
 			"abbrev": "LV",
@@ -205,7 +205,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-LAC",
+			"_idFL-LAC",
 			"value": "NFL-LAC",
 			"id": "24",
 			"abbrev": "LAC",
@@ -217,7 +217,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-LAR",
+			"_idFL-LAR",
 			"value": "NFL-LAR",
 			"id": "14",
 			"abbrev": "LAR",
@@ -229,7 +229,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-MIA",
+			"_idFL-MIA",
 			"value": "NFL-MIA",
 			"id": "15",
 			"abbrev": "MIA",
@@ -241,7 +241,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-MIN",
+			"_idFL-MIN",
 			"value": "NFL-MIN",
 			"id": "16",
 			"abbrev": "MIN",
@@ -253,7 +253,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-NE",
+			"_idFL-NE",
 			"value": "NFL-NE",
 			"id": "17",
 			"abbrev": "NE",
@@ -265,7 +265,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-NO",
+			"_idFL-NO",
 			"value": "NFL-NO",
 			"id": "18",
 			"abbrev": "NO",
@@ -277,7 +277,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-NYG",
+			"_idFL-NYG",
 			"value": "NFL-NYG",
 			"id": "19",
 			"abbrev": "NYG",
@@ -289,7 +289,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-NYJ",
+			"_idFL-NYJ",
 			"value": "NFL-NYJ",
 			"id": "20",
 			"abbrev": "NYJ",
@@ -301,7 +301,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-PHI",
+			"_idFL-PHI",
 			"value": "NFL-PHI",
 			"id": "21",
 			"abbrev": "PHI",
@@ -313,7 +313,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-PIT",
+			"_idFL-PIT",
 			"value": "NFL-PIT",
 			"id": "23",
 			"abbrev": "PIT",
@@ -325,7 +325,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-SF",
+			"_idFL-SF",
 			"value": "NFL-SF",
 			"id": "25",
 			"abbrev": "SF",
@@ -337,7 +337,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-SEA",
+			"_idFL-SEA",
 			"value": "NFL-SEA",
 			"id": "26",
 			"abbrev": "SEA",
@@ -349,7 +349,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-TB",
+			"_idFL-TB",
 			"value": "NFL-TB",
 			"id": "27",
 			"abbrev": "TB",
@@ -361,7 +361,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-TEN",
+			"_idFL-TEN",
 			"value": "NFL-TEN",
 			"id": "10",
 			"abbrev": "TEN",
@@ -373,7 +373,7 @@
 			"league": "NFL"
 		},
 		{
-			"uniqueId": "NFL-WSH",
+			"_idFL-WSH",
 			"value": "NFL-WSH",
 			"id": "28",
 			"abbrev": "WSH",

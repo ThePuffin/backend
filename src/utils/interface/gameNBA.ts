@@ -47,7 +47,7 @@ export interface Broadcast {
 }
 
 export enum Lang {
-  En = "en",
+  En = 'en',
 }
 
 export interface Market {
@@ -56,7 +56,7 @@ export interface Market {
 }
 
 export enum MarketType {
-  National = "National",
+  National = 'National',
 }
 
 export interface Media {
@@ -64,7 +64,7 @@ export interface Media {
 }
 
 export enum Region {
-  Us = "us",
+  Us = 'us',
 }
 
 export interface BroadcastType {
@@ -73,8 +73,8 @@ export interface BroadcastType {
 }
 
 export enum ShortName {
-  Streaming = "Streaming",
-  Tv = "TV",
+  Streaming = 'Streaming',
+  Tv = 'TV',
 }
 
 export interface Competitor {
@@ -86,8 +86,8 @@ export interface Competitor {
 }
 
 export enum HomeAway {
-  Away = "away",
-  Home = "home",
+  Away = 'away',
+  Home = 'home',
 }
 
 export interface CompetitorTeam {
@@ -108,31 +108,31 @@ export interface TeamLink {
 }
 
 export enum CompetitorType {
-  Clubhouse = "clubhouse",
-  Depthchart = "depthchart",
-  Desktop = "desktop",
-  Draftpicks = "draftpicks",
-  Injuries = "injuries",
-  Photos = "photos",
-  Roster = "roster",
-  Schedule = "schedule",
-  Stats = "stats",
-  Team = "team",
-  Tickets = "tickets",
-  Transactions = "transactions",
+  Clubhouse = 'clubhouse',
+  Depthchart = 'depthchart',
+  Desktop = 'desktop',
+  Draftpicks = 'draftpicks',
+  Injuries = 'injuries',
+  Photos = 'photos',
+  Roster = 'roster',
+  Schedule = 'schedule',
+  Stats = 'stats',
+  Team = 'team',
+  Tickets = 'tickets',
+  Transactions = 'transactions',
 }
 
 export enum PurpleText {
-  Clubhouse = "Clubhouse",
-  DepthChart = "Depth Chart",
-  DraftPicks = "Draft Picks",
-  Injuries = "Injuries",
-  Photos = "photos",
-  Roster = "Roster",
-  Schedule = "Schedule",
-  Statistics = "Statistics",
-  Tickets = "Tickets",
-  Transactions = "Transactions",
+  Clubhouse = 'Clubhouse',
+  DepthChart = 'Depth Chart',
+  DraftPicks = 'Draft Picks',
+  Injuries = 'Injuries',
+  Photos = 'photos',
+  Roster = 'Roster',
+  Schedule = 'Schedule',
+  Statistics = 'Statistics',
+  Tickets = 'Tickets',
+  Transactions = 'Transactions',
 }
 
 export interface Logo {
@@ -145,10 +145,10 @@ export interface Logo {
 }
 
 export enum LogoRel {
-  Dark = "dark",
-  Default = "default",
-  Full = "full",
-  Scoreboard = "scoreboard",
+  Dark = 'dark',
+  Default = 'default',
+  Full = 'full',
+  Scoreboard = 'scoreboard',
 }
 
 export interface Note {
@@ -157,10 +157,10 @@ export interface Note {
 }
 
 export enum NoteType {
-  Desktop = "desktop",
-  Event = "event",
-  Tickets = "tickets",
-  Venue = "venue",
+  Desktop = 'desktop',
+  Event = 'event',
+  Tickets = 'tickets',
+  Venue = 'venue',
 }
 
 export interface Status {
@@ -172,7 +172,7 @@ export interface Status {
 }
 
 export enum DisplayClock {
-  The000 = "0:00",
+  The000 = '0:00',
 }
 
 export interface StatusType {
@@ -186,15 +186,15 @@ export interface StatusType {
 }
 
 export enum Description {
-  Scheduled = "Scheduled",
+  Scheduled = 'Scheduled',
 }
 
 export enum TypeName {
-  StatusScheduled = "STATUS_SCHEDULED",
+  StatusScheduled = 'STATUS_SCHEDULED',
 }
 
 export enum State {
-  Pre = "pre",
+  Pre = 'pre',
 }
 
 export interface Ticket {
@@ -222,15 +222,15 @@ export interface CompetitionType {
 }
 
 export enum TypeAbbreviation {
-  Std = "STD",
+  Std = 'STD',
 }
 
 export enum Slug {
-  Standard = "standard",
+  Standard = 'standard',
 }
 
 export enum TypeText {
-  Standard = "Standard",
+  Standard = 'Standard',
 }
 
 export interface Venue {
@@ -255,29 +255,29 @@ export interface EventLink {
 }
 
 export enum Language {
-  EnUS = "en-US",
+  EnUS = 'en-US',
 }
 
 export enum LinkRel {
-  App = "app",
-  Desktop = "desktop",
-  Event = "event",
-  Now = "now",
-  Sportscenter = "sportscenter",
-  Summary = "summary",
-  Watchespn = "watchespn",
+  App = 'app',
+  Desktop = 'desktop',
+  Event = 'event',
+  Now = 'now',
+  Sportscenter = 'sportscenter',
+  Summary = 'summary',
+  Watchespn = 'watchespn',
 }
 
 export enum ShortText {
-  Now = "Now",
-  Summary = "Summary",
-  WatchESPN = "WatchESPN",
+  Now = 'Now',
+  Summary = 'Summary',
+  WatchESPN = 'WatchESPN',
 }
 
 export enum FluffyText {
-  Gamecast = "Gamecast",
-  Now = "Now",
-  WatchESPN = "WatchESPN",
+  Gamecast = 'Gamecast',
+  Now = 'Now',
+  WatchESPN = 'WatchESPN',
 }
 
 export interface EventSeason {
@@ -293,11 +293,11 @@ export interface SeasonType {
 }
 
 export enum SeasonTypeAbbreviation {
-  Reg = "reg",
+  Reg = 'reg',
 }
 
 export enum SeasonTypeName {
-  RegularSeason = "Regular Season",
+  RegularSeason = 'Regular Season',
 }
 
 export interface Week {

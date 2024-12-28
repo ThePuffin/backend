@@ -9,9 +9,6 @@ export class Team {
   _id: string;
 
   @Prop()
-  uniqueId: string;
-
-  @Prop()
   value: string;
 
   @Prop()
