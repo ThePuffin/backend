@@ -50,7 +50,7 @@
 //         const minStart = date.getMinutes();
 
 //         return {
-//           _id: `${value}${gameCode}`,
+//           uniqueId: `${value}${gameCode}`,
 //           arenaName: arenaName || '',
 //           awayTeamId: awayAbbrev,
 //           awayTeam: `${awayTeam.teamCity} ${awayTeam.teamName}`,
@@ -68,5 +68,5 @@
 //         };
 //       }
 //     })
-//     .filter((game) => game?._id
+//     .filter((game) => game?.uniqueId
 // };

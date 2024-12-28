@@ -1,7 +1,7 @@
 {
 	"activeTeams": [
 		{
-			"_id": "NHL-ANA",
+			"uniqueId": "NHL-ANA",
 			"value": "NHL-ANA",
 			"id": "ANA",
 			"abbrev": "ANA",
@@ -13,7 +13,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-BOS",
+			"uniqueIdHL-BOS",
 			"value": "NHL-BOS",
 			"id": "BOS",
 			"abbrev": "BOS",
@@ -25,7 +25,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-BUF",
+			"uniqueIdHL-BUF",
 			"value": "NHL-BUF",
 			"id": "BUF",
 			"abbrev": "BUF",
@@ -37,7 +37,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-CGY",
+			"uniqueIdHL-CGY",
 			"value": "NHL-CGY",
 			"id": "CGY",
 			"abbrev": "CGY",
@@ -49,7 +49,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-CAR",
+			"uniqueIdHL-CAR",
 			"value": "NHL-CAR",
 			"id": "CAR",
 			"abbrev": "CAR",
@@ -61,7 +61,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-CHI",
+			"uniqueIdHL-CHI",
 			"value": "NHL-CHI",
 			"id": "CHI",
 			"abbrev": "CHI",
@@ -73,7 +73,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-COL",
+			"uniqueIdHL-COL",
 			"value": "NHL-COL",
 			"id": "COL",
 			"abbrev": "COL",
@@ -85,7 +85,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-CBJ",
+			"uniqueIdHL-CBJ",
 			"value": "NHL-CBJ",
 			"id": "CBJ",
 			"abbrev": "CBJ",
@@ -97,7 +97,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-DAL",
+			"uniqueIdHL-DAL",
 			"value": "NHL-DAL",
 			"id": "DAL",
 			"abbrev": "DAL",
@@ -109,7 +109,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-DET",
+			"uniqueIdHL-DET",
 			"value": "NHL-DET",
 			"id": "DET",
 			"abbrev": "DET",
@@ -121,7 +121,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-EDM",
+			"uniqueIdHL-EDM",
 			"value": "NHL-EDM",
 			"id": "EDM",
 			"abbrev": "EDM",
@@ -133,7 +133,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-FLA",
+			"uniqueIdHL-FLA",
 			"value": "NHL-FLA",
 			"id": "FLA",
 			"abbrev": "FLA",
@@ -145,7 +145,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-LAK",
+			"uniqueIdHL-LAK",
 			"value": "NHL-LAK",
 			"id": "LAK",
 			"abbrev": "LAK",
@@ -157,7 +157,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-MIN",
+			"uniqueIdHL-MIN",
 			"value": "NHL-MIN",
 			"id": "MIN",
 			"abbrev": "MIN",
@@ -169,7 +169,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-MTL",
+			"uniqueIdHL-MTL",
 			"value": "NHL-MTL",
 			"id": "MTL",
 			"abbrev": "MTL",
@@ -181,7 +181,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-NYI",
+			"uniqueIdHL-NYI",
 			"value": "NHL-NYI",
 			"id": "NYI",
 			"abbrev": "NYI",
@@ -193,7 +193,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-NYR",
+			"uniqueIdHL-NYR",
 			"value": "NHL-NYR",
 			"id": "NYR",
 			"abbrev": "NYR",
@@ -205,7 +205,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-NSH",
+			"uniqueIdHL-NSH",
 			"value": "NHL-NSH",
 			"id": "NSH",
 			"abbrev": "NSH",
@@ -217,7 +217,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-NJD",
+			"uniqueIdHL-NJD",
 			"value": "NHL-NJD",
 			"id": "NJD",
 			"abbrev": "NJD",
@@ -229,7 +229,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-OTT",
+			"uniqueIdHL-OTT",
 			"value": "NHL-OTT",
 			"id": "OTT",
 			"abbrev": "OTT",
@@ -241,7 +241,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-PHI",
+			"uniqueIdHL-PHI",
 			"value": "NHL-PHI",
 			"id": "PHI",
 			"abbrev": "PHI",
@@ -253,7 +253,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-PIT",
+			"uniqueIdHL-PIT",
 			"value": "NHL-PIT",
 			"id": "PIT",
 			"abbrev": "PIT",
@@ -265,7 +265,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-SJS",
+			"uniqueIdHL-SJS",
 			"value": "NHL-SJS",
 			"id": "SJS",
 			"abbrev": "SJS",
@@ -277,7 +277,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-SEA",
+			"uniqueIdHL-SEA",
 			"value": "NHL-SEA",
 			"id": "SEA",
 			"abbrev": "SEA",
@@ -289,7 +289,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-STL",
+			"uniqueIdHL-STL",
 			"value": "NHL-STL",
 			"id": "STL",
 			"abbrev": "STL",
@@ -301,7 +301,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-TBL",
+			"uniqueIdHL-TBL",
 			"value": "NHL-TBL",
 			"id": "TBL",
 			"abbrev": "TBL",
@@ -313,7 +313,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-TOR",
+			"uniqueIdHL-TOR",
 			"value": "NHL-TOR",
 			"id": "TOR",
 			"abbrev": "TOR",
@@ -325,7 +325,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-UTA",
+			"uniqueIdHL-UTA",
 			"value": "NHL-UTA",
 			"id": "UTA",
 			"abbrev": "UTA",
@@ -337,7 +337,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-VAN",
+			"uniqueIdHL-VAN",
 			"value": "NHL-VAN",
 			"id": "VAN",
 			"abbrev": "VAN",
@@ -349,7 +349,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-VGK",
+			"uniqueIdHL-VGK",
 			"value": "NHL-VGK",
 			"id": "VGK",
 			"abbrev": "VGK",
@@ -361,7 +361,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-WSH",
+			"uniqueIdHL-WSH",
 			"value": "NHL-WSH",
 			"id": "WSH",
 			"abbrev": "WSH",
@@ -373,7 +373,7 @@
 			"league": "NHL"
 		},
 		{
-			"_idHL-WPG",
+			"uniqueIdHL-WPG",
 			"value": "NHL-WPG",
 			"id": "WPG",
 			"abbrev": "WPG",

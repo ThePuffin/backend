@@ -6,7 +6,7 @@ export type TeamDocument = HydratedDocument<Team>;
 @Schema()
 export class Team {
   @Prop()
-  _id: string;
+  uniqueId: string;
 
   @Prop()
   value: string;

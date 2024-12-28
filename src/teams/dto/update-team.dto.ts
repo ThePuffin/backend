@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class UpdateTeamDto {
   @ApiProperty()
-  _id: string;
+  uniqueId: string;
 
   @ApiProperty()
   value: string;

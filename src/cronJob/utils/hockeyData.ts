@@ -55,11 +55,11 @@ export const getNhlTeams = async () => {
           conferenceName,
         } = team;
         const teamID = teamAbbrev.default;
-        const _id = `${leagueName}-${teamID}`;
+        const uniqueId = `${leagueName}-${teamID}`;
 
         return {
-          _id,
-          value: _id,
+          uniqueId,
+          value: uniqueId,
           id: teamID,
           abbrev: teamID,
           label: teamName?.default,
@@ -84,13 +84,13 @@ export const getNhlTeams = async () => {
     // }
 
     // activeTeams.forEach(async (team: TeamType) => {
-    //   const { _id, ...teamData } = team;
+    //   const { uniqueId, ...teamData } = team;
 
     //   await db
     //     .insert(Teams)
     //     .values({ ...team })
     //     .onConflictDoUpdate({
-    //       target: Teams._id,
+    //       target: Teams.uniqueId,
     //       set: {
     //         ...teamData,
     //       },
@@ -192,7 +192,7 @@ export const getNhlTeams = async () => {
 
 //       if (new Date(gameDate) < now) return;
 //       return {
-//         _id: `${leagueName}.${id}.${game.gameDate}`,
+//         uniqueId: `${leagueName}.${id}.${game.gameDate}`,
 //         awayTeamId: awayTeam.abbrev,
 //         awayTeam: awayTeam.placeName.default,
 //         homeTeam: homeTeam.placeName.default,
@@ -212,12 +212,12 @@ export const getNhlTeams = async () => {
 
 //     gamesData = gamesData.filter((game) => game !== undefined && game !== null);
 //     gamesData.forEach(async (gameTeam: GameFormatted) => {
-//       const { _id, ...gameData } = gameTeam;
+//       const { uniqueId, ...gameData } = gameTeam;
 //       await db
 //         .insert(Games)
 //         .values({ ...gameTeam })
 //         .onConflictDoUpdate({
-//           target: Games._id,
+//           target: Games.uniqueId,
 //           set: {
 //             ...gameData,
 //           },

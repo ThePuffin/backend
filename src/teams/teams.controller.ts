@@ -12,18 +12,21 @@ export class TeamsController {
     return this.TeamService.findAll();
   }
 
-  @Get(':_id')
-  findOne(@Param('_id') _id: string) {
-    return this.TeamService.findOne(_id);
+  @Get(':uniqueId')
+  findOne(@Param('uniqueId') uniqueId: string) {
+    return this.TeamService.findOne(uniqueId);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTeamDto: UpdateTeamDto) {
-    return this.TeamService.update(id, updateTeamDto);
+  @Patch(':uniqueId')
+  update(
+    @Param('uniqueId') uniqueId: string,
+    @Body() updateTeamDto: UpdateTeamDto,
+  ) {
+    return this.TeamService.update(uniqueId, updateTeamDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.TeamService.remove(id);
+  @Delete(':uniqueId')
+  remove(@Param('uniqueId') uniqueId: string) {
+    return this.TeamService.remove(uniqueId);
   }
 }

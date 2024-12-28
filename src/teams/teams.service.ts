@@ -11,36 +11,45 @@ export class TeamService {
   constructor(@InjectModel(Team.name) public teamModel: Model<Team>) {}
 
   async create(teamDto: CreateTeamDto | UpdateTeamDto): Promise<Team> {
-    const { _id } = teamDto;
+    const { uniqueId } = teamDto;
 
-    if (_id) {
-      const existingTeam = await this.teamModel.findOne({ _id });
+    if (uniqueId) {
+      console.log({ uniqueId });
+
+      const existingTeam = await this.findOne(uniqueId);
+
+      console.log({ existingTeam });
+
       if (existingTeam) {
-        return this.teamModel.save({ ...existingTeam, ...teamDto });
+        Object.assign(existingTeam, teamDto);
+        return await existingTeam.save();
       }
     }
 
-    const newTeam = this.teamModel.create(teamDto);
-    return await this.teamModel.save(newTeam);
+    const newTeam = new this.teamModel(teamDto);
+    return await newTeam.save();
   }
 
   async findAll(): Promise<Team[]> {
     return this.teamModel.find().exec();
   }
 
-  findOne(_id: string) {
-    console.log('_id', _id);
-    const filter = { _id: _id };
-    return this.teamModel.findOne(filter).exec();
+  async findOne(uniqueId: string) {
+    console.log('uniqueId', uniqueId);
+    const filter = { uniqueId: uniqueId };
+    const team = await this.teamModel.findOne(filter).exec();
+    console.log({ team });
+
+    return team;
   }
 
-  update(id: string, updateTeamDto: UpdateTeamDto) {
-    const filter = { _id: id };
+  update(uniqueId: string, updateTeamDto: UpdateTeamDto) {
+    const filter = { uniqueId: uniqueId };
     return this.teamModel.updateOne(filter, updateTeamDto);
   }
 
-  async remove(id: string) {
-    const filter = { _id: id };
+  async remove(uniqueId: string) {
+    const filter = { uniqueId: uniqueId };
 
     const deleted = await this.teamModel.findOneAndDelete(filter).exec();
     return deleted;

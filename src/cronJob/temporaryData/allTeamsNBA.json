@@ -1,7 +1,7 @@
 {
 	"activeTeams": [
 		{
-			"_id": "NBA-ATL",
+			"uniqueId": "NBA-ATL",
 			"value": "NBA-ATL",
 			"id": "1",
 			"abbrev": "ATL",
@@ -13,7 +13,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-BOS",
+			"uniqueIdBA-BOS",
 			"value": "NBA-BOS",
 			"id": "2",
 			"abbrev": "BOS",
@@ -25,7 +25,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-BKN",
+			"uniqueIdBA-BKN",
 			"value": "NBA-BKN",
 			"id": "17",
 			"abbrev": "BKN",
@@ -37,7 +37,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-CHA",
+			"uniqueIdBA-CHA",
 			"value": "NBA-CHA",
 			"id": "30",
 			"abbrev": "CHA",
@@ -49,7 +49,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-CHI",
+			"uniqueIdBA-CHI",
 			"value": "NBA-CHI",
 			"id": "4",
 			"abbrev": "CHI",
@@ -61,7 +61,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-CLE",
+			"uniqueIdBA-CLE",
 			"value": "NBA-CLE",
 			"id": "5",
 			"abbrev": "CLE",
@@ -73,7 +73,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-DAL",
+			"uniqueIdBA-DAL",
 			"value": "NBA-DAL",
 			"id": "6",
 			"abbrev": "DAL",
@@ -85,7 +85,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-DEN",
+			"uniqueIdBA-DEN",
 			"value": "NBA-DEN",
 			"id": "7",
 			"abbrev": "DEN",
@@ -97,7 +97,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-DET",
+			"uniqueIdBA-DET",
 			"value": "NBA-DET",
 			"id": "8",
 			"abbrev": "DET",
@@ -109,7 +109,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-GS",
+			"uniqueIdBA-GS",
 			"value": "NBA-GS",
 			"id": "9",
 			"abbrev": "GS",
@@ -121,7 +121,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-HOU",
+			"uniqueIdBA-HOU",
 			"value": "NBA-HOU",
 			"id": "10",
 			"abbrev": "HOU",
@@ -133,7 +133,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-IND",
+			"uniqueIdBA-IND",
 			"value": "NBA-IND",
 			"id": "11",
 			"abbrev": "IND",
@@ -145,7 +145,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-LAC",
+			"uniqueIdBA-LAC",
 			"value": "NBA-LAC",
 			"id": "12",
 			"abbrev": "LAC",
@@ -157,7 +157,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-LAL",
+			"uniqueIdBA-LAL",
 			"value": "NBA-LAL",
 			"id": "13",
 			"abbrev": "LAL",
@@ -169,7 +169,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-MEM",
+			"uniqueIdBA-MEM",
 			"value": "NBA-MEM",
 			"id": "29",
 			"abbrev": "MEM",
@@ -181,7 +181,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-MIA",
+			"uniqueIdBA-MIA",
 			"value": "NBA-MIA",
 			"id": "14",
 			"abbrev": "MIA",
@@ -193,7 +193,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-MIL",
+			"uniqueIdBA-MIL",
 			"value": "NBA-MIL",
 			"id": "15",
 			"abbrev": "MIL",
@@ -205,7 +205,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-MIN",
+			"uniqueIdBA-MIN",
 			"value": "NBA-MIN",
 			"id": "16",
 			"abbrev": "MIN",
@@ -217,7 +217,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-NO",
+			"uniqueIdBA-NO",
 			"value": "NBA-NO",
 			"id": "3",
 			"abbrev": "NO",
@@ -229,7 +229,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-NY",
+			"uniqueIdBA-NY",
 			"value": "NBA-NY",
 			"id": "18",
 			"abbrev": "NY",
@@ -241,7 +241,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-OKC",
+			"uniqueIdBA-OKC",
 			"value": "NBA-OKC",
 			"id": "25",
 			"abbrev": "OKC",
@@ -253,7 +253,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-ORL",
+			"uniqueIdBA-ORL",
 			"value": "NBA-ORL",
 			"id": "19",
 			"abbrev": "ORL",
@@ -265,7 +265,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-PHI",
+			"uniqueIdBA-PHI",
 			"value": "NBA-PHI",
 			"id": "20",
 			"abbrev": "PHI",
@@ -277,7 +277,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-PHX",
+			"uniqueIdBA-PHX",
 			"value": "NBA-PHX",
 			"id": "21",
 			"abbrev": "PHX",
@@ -289,7 +289,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-POR",
+			"uniqueIdBA-POR",
 			"value": "NBA-POR",
 			"id": "22",
 			"abbrev": "POR",
@@ -301,7 +301,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-SAC",
+			"uniqueIdBA-SAC",
 			"value": "NBA-SAC",
 			"id": "23",
 			"abbrev": "SAC",
@@ -313,7 +313,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-SA",
+			"uniqueIdBA-SA",
 			"value": "NBA-SA",
 			"id": "24",
 			"abbrev": "SA",
@@ -325,7 +325,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-TOR",
+			"uniqueIdBA-TOR",
 			"value": "NBA-TOR",
 			"id": "28",
 			"abbrev": "TOR",
@@ -337,7 +337,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-UTAH",
+			"uniqueIdBA-UTAH",
 			"value": "NBA-UTAH",
 			"id": "26",
 			"abbrev": "UTAH",
@@ -349,7 +349,7 @@
 			"league": "NBA"
 		},
 		{
-			"_idBA-WSH",
+			"uniqueIdBA-WSH",
 			"value": "NBA-WSH",
 			"id": "27",
 			"abbrev": "WSH",
