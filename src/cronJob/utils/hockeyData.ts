@@ -12,221 +12,230 @@ import { Team, TeamSchema } from 'src/teams/schemas/team.schema';
 import { League } from '../../utils/enum';
 const leagueName = League.NHL;
 // const { NODE_ENV } = process.env;
-export const getNhlTeams = async () => {
-  const teamModel: Model<Team> = model('Team', TeamSchema);
 
-  const teamService = new TeamService(teamModel);
-  try {
-    // const nhlTeams = await db
-    //   .select()
-    //   .from(Teams)
-    //   .where(eq(Teams.league, leagueName));
-    // if (nhlTeams[0] && !isExpiredData(nhlTeams[0]?.updateDate)) {
-    //   getNhlSchedule();
-    //   return nhlTeams;
-    // }
-    let allTeams: TeamNHL[];
-
-    const fetchedTeams = await fetch(
-      'https://api-web.nhle.com/v1/standings/now',
-    );
-    const fetchTeams = await fetchedTeams.json();
-    allTeams = await fetchTeams.standings;
-
-    allTeams = allTeams.map((team: TeamNHL) => {
-      if (team.teamAbbrev.default === 'ARI') {
-        team.teamAbbrev.default = 'UTA';
-        team.teamCommonName.default = 'Utah';
-      }
-      return team;
-    });
-
-    const activeTeams = allTeams
-      .toSorted((a: TeamNHL, b: TeamNHL) =>
-        a.placeName?.default > b.placeName?.default ? 1 : -1,
-      )
-      .map((team: TeamNHL) => {
-        const {
-          teamAbbrev,
-          teamName,
-          teamLogo,
-          divisionName,
-          teamCommonName,
-          conferenceName,
-        } = team;
-        const teamID = teamAbbrev.default;
-        const uniqueId = `${leagueName}-${teamID}`;
-
-        return {
-          uniqueId,
-          value: uniqueId,
-          id: teamID,
-          abbrev: teamID,
-          label: teamName?.default,
-          teamLogo: teamLogo,
-          teamCommonName: teamCommonName.default,
-          conferenceName,
-          divisionName,
-          league: leagueName,
-          updateDate: new Date().toDateString(),
-        };
-      });
-    console.log('teams number !!!!', activeTeams.length);
-
-    for (const activeTeam of activeTeams) {
-      let teamToInsert = new CreateTeamDto();
-      teamToInsert = { ...activeTeam };
-      await teamService.create(teamToInsert);
-      console.log('updated =>', teamToInsert.label);
-    }
-    // if (NODE_ENV === "development") {
-    //   await writeJsonFile("./temporaryData/allTeamsNHL.json", { activeTeams });
-    // }
-
-    // activeTeams.forEach(async (team: TeamType) => {
-    //   const { uniqueId, ...teamData } = team;
-
-    //   await db
-    //     .insert(Teams)
-    //     .values({ ...team })
-    //     .onConflictDoUpdate({
-    //       target: Teams.uniqueId,
-    //       set: {
-    //         ...teamData,
-    //       },
-    //     });
-    // });
-    // getNhlSchedule();
-
-    return activeTeams;
-  } catch (error) {
-    console.log('Error fetching data =>', error);
-    // getNhlSchedule();
-    // return allTeamsFile.activeTeams;
+export class HockeyData {
+  private teamService: TeamService;
+  constructor() {
+    const teamModel: Model<Team> = model('Team', TeamSchema);
+    this.teamService = new TeamService(teamModel);
   }
-};
 
-// export const getNhlSchedule = async () => {
-//   const allGames = {};
-//   const activeTeams: TeamType[] = await db
-//     .select()
-//     .from(Teams)
-//     .where(eq(Teams.league, leagueName));
-//   await Promise.all(
-//     activeTeams.map(async ({ id, value }) => {
-//       const leagueID = `${leagueName}-${id}`;
-//       allGames[leagueID] = await getNhlTeamSchedule(id, value);
-//     }),
-//   );
+  async getNhlTeams() {
+    const teamModel: Model<Team> = model('Team', TeamSchema);
 
-//   if (NODE_ENV === 'development') {
-//     const firstKey = activeTeams[0]?.id;
-//     const NHLgames = await db
-//       .select()
-//       .from(Games)
-//       .where(eq(Games.homeTeamShort, firstKey))
-//       .limit(1);
+    try {
+      // const nhlTeams = await db
+      //   .select()
+      //   .from(Teams)
+      //   .where(eq(Teams.league, leagueName));
+      // if (nhlTeams[0] && !isExpiredData(nhlTeams[0]?.updateDate)) {
+      //   getNhlSchedule();
+      //   return nhlTeams;
+      // }
+      let allTeams: TeamNHL[];
 
-//     const updateDate =
-//       (firstKey && NHLgames[0]?.updateDate) || new Date('2020-02-20');
-//     const expiredData = isExpiredData(updateDate);
+      const fetchedTeams = await fetch(
+        'https://api-web.nhle.com/v1/standings/now',
+      );
+      const fetchTeams = await fetchedTeams.json();
+      allTeams = await fetchTeams.standings;
 
-//     for (const team of Object.keys(allGames)) {
-//       if (allGames[team].length === 0) {
-//         delete allGames[team];
-//       }
-//     }
+      allTeams = allTeams.map((team: TeamNHL) => {
+        if (team.teamAbbrev.default === 'ARI') {
+          team.teamAbbrev.default = 'UTA';
+          team.teamCommonName.default = 'Utah';
+        }
+        return team;
+      });
 
-//     if (expiredData && Object.keys(allGames).length > 0) {
-//       await writeJsonFile(
-//         './temporaryData/updatecurrentSeasonNHL.json',
-//         allGames,
-//       );
-//       console.log('updated updatecurrentSeasonNHL.json');
-//     }
-//   }
-//   console.log('updated NHL');
-//   return allGames;
-// };
+      const activeTeams = allTeams
+        .toSorted((a: TeamNHL, b: TeamNHL) =>
+          a.placeName?.default > b.placeName?.default ? 1 : -1,
+        )
+        .map((team: TeamNHL) => {
+          const {
+            teamAbbrev,
+            teamName,
+            teamLogo,
+            divisionName,
+            teamCommonName,
+            conferenceName,
+          } = team;
+          const teamID = teamAbbrev.default;
+          const uniqueId = `${leagueName}-${teamID}`;
 
-// const getNhlTeamSchedule = async (id: string, value: string) => {
-//   try {
-//     const NHLgames = await db
-//       .select()
-//       .from(Games)
-//       .where(eq(Games.teamSelectedId, value));
+          return {
+            uniqueId,
+            value: uniqueId,
+            id: teamID,
+            abbrev: teamID,
+            label: teamName?.default,
+            teamLogo: teamLogo,
+            teamCommonName: teamCommonName.default,
+            conferenceName,
+            divisionName,
+            league: leagueName,
+            updateDate: new Date().toDateString(),
+          };
+        });
+      console.log('teams number !!!!', activeTeams.length);
 
-//     if (NHLgames[0]?.updateDate && !isExpiredData(NHLgames[0]?.updateDate)) {
-//       return NHLgames.map((game: GameFormatted) => {
-//         delete game.updateDate;
-//         return game;
-//       });
-//     }
+      for (const activeTeam of activeTeams) {
+        // let teamToInsert = new CreateTeamDto();
+        // teamToInsert = { ...activeTeam };
+        console.log('updated =>', activeTeam.label);
+        await this.teamService.create(activeTeam);
+        console.log('updated =>', activeTeam.label);
+      }
+      // if (NODE_ENV === "development") {
+      //   await writeJsonFile("./temporaryData/allTeamsNHL.json", { activeTeams });
+      // }
 
-//     let games: NHLGameAPI[];
-//     try {
-//       const fetchedGames = await fetch(
-//         `https://api-web.nhle.com/v1/club-schedule-season/${id}/now`,
-//       );
-//       const fetchGames = await fetchedGames.json();
-//       games = await fetchGames.games;
-//       console.log('yes', value);
-//     } catch (error) {
-//       console.log('no', value);
+      // activeTeams.forEach(async (team: TeamType) => {
+      //   const { uniqueId, ...teamData } = team;
 
-//       games = [];
-//     }
-//     const now = new Date();
-//     let gamesData: GameFormatted[] = games.map((game: NHLGameAPI) => {
-//       const {
-//         awayTeam,
-//         homeTeam,
-//         venue,
-//         gameDate,
-//         venueTimezone,
-//         startTimeUTC,
-//         venueUTCOffset,
-//       } = game;
+      //   await db
+      //     .insert(Teams)
+      //     .values({ ...team })
+      //     .onConflictDoUpdate({
+      //       target: Teams.uniqueId,
+      //       set: {
+      //         ...teamData,
+      //       },
+      //     });
+      // });
+      // getNhlSchedule();
 
-//       const timeStart = getHourGame(startTimeUTC, venueUTCOffset);
+      return activeTeams;
+    } catch (error) {
+      console.log('Error fetching data =>', error);
+      // getNhlSchedule();
+      // return allTeamsFile.activeTeams;
+    }
+  }
 
-//       if (new Date(gameDate) < now) return;
-//       return {
-//         uniqueId: `${leagueName}.${id}.${game.gameDate}`,
-//         awayTeamId: awayTeam.abbrev,
-//         awayTeam: awayTeam.placeName.default,
-//         homeTeam: homeTeam.placeName.default,
-//         awayTeamShort: awayTeam.abbrev,
-//         homeTeamId: homeTeam.abbrev,
-//         homeTeamShort: homeTeam.abbrev,
-//         arenaName: venue?.default || '',
-//         gameDate: gameDate,
-//         teamSelectedId: value,
-//         show: homeTeam.abbrev === id,
-//         selectedTeam: homeTeam.abbrev === id,
-//         league: leagueName,
-//         venueTimezone: venueTimezone,
-//         timeStart,
-//       };
-//     });
+  // export const getNhlSchedule = async () => {
+  //   const allGames = {};
+  //   const activeTeams: TeamType[] = await db
+  //     .select()
+  //     .from(Teams)
+  //     .where(eq(Teams.league, leagueName));
+  //   await Promise.all(
+  //     activeTeams.map(async ({ id, value }) => {
+  //       const leagueID = `${leagueName}-${id}`;
+  //       allGames[leagueID] = await getNhlTeamSchedule(id, value);
+  //     }),
+  //   );
 
-//     gamesData = gamesData.filter((game) => game !== undefined && game !== null);
-//     gamesData.forEach(async (gameTeam: GameFormatted) => {
-//       const { uniqueId, ...gameData } = gameTeam;
-//       await db
-//         .insert(Games)
-//         .values({ ...gameTeam })
-//         .onConflictDoUpdate({
-//           target: Games.uniqueId,
-//           set: {
-//             ...gameData,
-//           },
-//         });
-//     });
+  //   if (NODE_ENV === 'development') {
+  //     const firstKey = activeTeams[0]?.id;
+  //     const NHLgames = await db
+  //       .select()
+  //       .from(Games)
+  //       .where(eq(Games.homeTeamShort, firstKey))
+  //       .limit(1);
 
-//     return gamesData;
-//   } catch (error) {
-//     console.log('Error fetching data', error);
-//     return {};
-//   }
-// };
+  //     const updateDate =
+  //       (firstKey && NHLgames[0]?.updateDate) || new Date('2020-02-20');
+  //     const expiredData = isExpiredData(updateDate);
+
+  //     for (const team of Object.keys(allGames)) {
+  //       if (allGames[team].length === 0) {
+  //         delete allGames[team];
+  //       }
+  //     }
+
+  //     if (expiredData && Object.keys(allGames).length > 0) {
+  //       await writeJsonFile(
+  //         './temporaryData/updatecurrentSeasonNHL.json',
+  //         allGames,
+  //       );
+  //       console.log('updated updatecurrentSeasonNHL.json');
+  //     }
+  //   }
+  //   console.log('updated NHL');
+  //   return allGames;
+  // };
+
+  // const getNhlTeamSchedule = async (id: string, value: string) => {
+  //   try {
+  //     const NHLgames = await db
+  //       .select()
+  //       .from(Games)
+  //       .where(eq(Games.teamSelectedId, value));
+
+  //     if (NHLgames[0]?.updateDate && !isExpiredData(NHLgames[0]?.updateDate)) {
+  //       return NHLgames.map((game: GameFormatted) => {
+  //         delete game.updateDate;
+  //         return game;
+  //       });
+  //     }
+
+  //     let games: NHLGameAPI[];
+  //     try {
+  //       const fetchedGames = await fetch(
+  //         `https://api-web.nhle.com/v1/club-schedule-season/${id}/now`,
+  //       );
+  //       const fetchGames = await fetchedGames.json();
+  //       games = await fetchGames.games;
+  //       console.log('yes', value);
+  //     } catch (error) {
+  //       console.log('no', value);
+
+  //       games = [];
+  //     }
+  //     const now = new Date();
+  //     let gamesData: GameFormatted[] = games.map((game: NHLGameAPI) => {
+  //       const {
+  //         awayTeam,
+  //         homeTeam,
+  //         venue,
+  //         gameDate,
+  //         venueTimezone,
+  //         startTimeUTC,
+  //         venueUTCOffset,
+  //       } = game;
+
+  //       const timeStart = getHourGame(startTimeUTC, venueUTCOffset);
+
+  //       if (new Date(gameDate) < now) return;
+  //       return {
+  //         uniqueId: `${leagueName}.${id}.${game.gameDate}`,
+  //         awayTeamId: awayTeam.abbrev,
+  //         awayTeam: awayTeam.placeName.default,
+  //         homeTeam: homeTeam.placeName.default,
+  //         awayTeamShort: awayTeam.abbrev,
+  //         homeTeamId: homeTeam.abbrev,
+  //         homeTeamShort: homeTeam.abbrev,
+  //         arenaName: venue?.default || '',
+  //         gameDate: gameDate,
+  //         teamSelectedId: value,
+  //         show: homeTeam.abbrev === id,
+  //         selectedTeam: homeTeam.abbrev === id,
+  //         league: leagueName,
+  //         venueTimezone: venueTimezone,
+  //         timeStart,
+  //       };
+  //     });
+
+  //     gamesData = gamesData.filter((game) => game !== undefined && game !== null);
+  //     gamesData.forEach(async (gameTeam: GameFormatted) => {
+  //       const { uniqueId, ...gameData } = gameTeam;
+  //       await db
+  //         .insert(Games)
+  //         .values({ ...gameTeam })
+  //         .onConflictDoUpdate({
+  //           target: Games.uniqueId,
+  //           set: {
+  //             ...gameData,
+  //           },
+  //         });
+  //     });
+
+  //     return gamesData;
+  //   } catch (error) {
+  //     console.log('Error fetching data', error);
+  //     return {};
+  //   }
+  // };
+}

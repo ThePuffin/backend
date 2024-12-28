@@ -1,7 +1,16 @@
-import { Controller, Get, Patch, Delete, Body, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Patch,
+  Post,
+  Delete,
+  Body,
+  Param,
+} from '@nestjs/common';
 import { TeamService } from './teams.service';
 import { TeamType } from '../utils/interface/team';
 import { UpdateTeamDto } from './dto/update-team.dto';
+import { CreateTeamDto } from './dto/create-team.dto';
 
 @Controller('teams')
 export class TeamsController {
@@ -15,6 +24,11 @@ export class TeamsController {
   @Get(':uniqueId')
   findOne(@Param('uniqueId') uniqueId: string) {
     return this.TeamService.findOne(uniqueId);
+  }
+
+  @Post()
+  async create(@Body() createTeamDto: CreateTeamDto) {
+    this.TeamService.create(createTeamDto);
   }
 
   @Patch(':uniqueId')
