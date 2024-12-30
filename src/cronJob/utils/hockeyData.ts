@@ -15,23 +15,10 @@ const { NODE_ENV } = process.env;
 
 export class HockeyData {
   private readonly teamService: TeamService;
-  constructor() {
-    const teamModel: Model<Team> = model('Team', TeamSchema);
-    this.teamService = new TeamService(teamModel);
-  }
+  constructor() {}
 
   async getNhlTeams() {
-    // const teamModel: Model<Team> = model('Team', TeamSchema);
-
     try {
-      // const nhlTeams = await db
-      //   .select()
-      //   .from(Teams)
-      //   .where(eq(Teams.league, leagueName));
-      // if (nhlTeams[0] && !isExpiredData(nhlTeams[0]?.updateDate)) {
-      //   getNhlSchedule();
-      //   return nhlTeams;
-      // }
       let allTeams: TeamNHL[];
 
       const fetchedTeams = await fetch(
@@ -79,33 +66,6 @@ export class HockeyData {
           };
         });
 
-      // for (const activeTeam of activeTeams) {
-      //   // let teamToInsert = new CreateTeamDto();
-      //   // teamToInsert = { ...activeTeam };
-      //   let filter = { uniqueId: activeTeam.uniqueId };
-      //   let doc = { $push: { uniqueId: activeTeam.uniqueId } };
-      //   let options = { upsert: true };
-      //   // await this.teamService.create(filter, doc, options);
-      // }
-      // if (NODE_ENV === 'development') {
-      //   await writeJsonFile('./temporaryData/allTeamsNHL.json', {
-      //     activeTeams,
-      //   });
-      // }
-
-      // activeTeams.forEach(async (team: TeamType) => {
-      //   const { uniqueId, ...teamData } = team;
-
-      //   await db
-      //     .insert(Teams)
-      //     .values({ ...team })
-      //     .onConflictDoUpdate({
-      //       target: Teams.uniqueId,
-      //       set: {
-      //         ...teamData,
-      //       },
-      //     });
-      // });
       // getNhlSchedule();
       console.log('teams number !!!!', activeTeams[0].label);
       return activeTeams;

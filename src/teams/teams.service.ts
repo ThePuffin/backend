@@ -15,12 +15,7 @@ export class TeamService {
     const { uniqueId } = teamDto;
 
     if (uniqueId) {
-      console.log({ uniqueId });
-
       const existingTeam = await this.findOne(uniqueId);
-
-      console.log({ existingTeam });
-
       if (existingTeam) {
         Object.assign(existingTeam, teamDto);
         return await existingTeam.save();
@@ -31,13 +26,11 @@ export class TeamService {
     return await newTeam.save();
   }
 
-  async getSportData(): Promise<any> {
+  async getTeams(): Promise<any> {
     const hockeyData = new HockeyData();
     const activeTeams = await hockeyData.getNhlTeams();
     for (const activeTeam of activeTeams) {
-      const newTeam = new this.teamModel(activeTeam);
-      const save = await newTeam.save();
-      console.log({ save });
+      await this.create(activeTeam);
     }
 
     return activeTeams;

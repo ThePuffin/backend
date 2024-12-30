@@ -33,7 +33,7 @@ export class TeamsController {
 
   @Post('refresh')
   async refresh() {
-    return this.TeamService.getSportData();
+    return this.TeamService.getTeams();
   }
 
   @Patch(':uniqueId')
