@@ -31,6 +31,11 @@ export class TeamsController {
     this.TeamService.create(createTeamDto);
   }
 
+  @Post('refresh')
+  async refresh() {
+    return this.TeamService.getSportData();
+  }
+
   @Patch(':uniqueId')
   update(
     @Param('uniqueId') uniqueId: string,

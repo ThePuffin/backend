@@ -1,12 +1,12 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller } from '@nestjs/common';
+// import { TeamService } from './teams/teams.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor() {}
 
-  @Get()
-  getSportData(): Promise<any> {
-    return this.appService.getSportData();
-  }
+  // @Get()
+  // getSportData(): Promise<any> {
+  //   return this.teamService.getSportData();
+  // }
 }

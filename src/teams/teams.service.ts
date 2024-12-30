@@ -5,6 +5,7 @@ import { Team } from './schemas/team.schema';
 
 import { CreateTeamDto } from './dto/create-team.dto';
 import { UpdateTeamDto } from './dto/update-team.dto';
+import { HockeyData } from '../cronJob/utils/hockeyData';
 
 @Injectable()
 export class TeamService {
@@ -28,6 +29,18 @@ export class TeamService {
 
     const newTeam = new this.teamModel(teamDto);
     return await newTeam.save();
+  }
+
+  async getSportData(): Promise<any> {
+    const hockeyData = new HockeyData();
+    const activeTeams = await hockeyData.getNhlTeams();
+    for (const activeTeam of activeTeams) {
+      const newTeam = new this.teamModel(activeTeam);
+      const save = await newTeam.save();
+      console.log({ save });
+    }
+
+    return activeTeams;
   }
 
   async findAll(): Promise<Team[]> {

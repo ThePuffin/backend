@@ -1,5 +1,5 @@
 // import { Games, Teams, db, eq } from "astro:db";
-// import { writeJsonFile } from "write-json-file";
+// import { writeJsonFile } from 'write-json-file';
 // import allTeamsFile from "../../temporaryData/allTeamsNHL.json";
 // import type { GameFormatted } from "../interface/game.ts";
 // import type { NHLGameAPI } from "../../interface/gameNHL";
@@ -11,17 +11,17 @@ import { Model, model } from 'mongoose';
 import { Team, TeamSchema } from 'src/teams/schemas/team.schema';
 import { League } from '../../utils/enum';
 const leagueName = League.NHL;
-// const { NODE_ENV } = process.env;
+const { NODE_ENV } = process.env;
 
 export class HockeyData {
-  private teamService: TeamService;
+  private readonly teamService: TeamService;
   constructor() {
     const teamModel: Model<Team> = model('Team', TeamSchema);
     this.teamService = new TeamService(teamModel);
   }
 
   async getNhlTeams() {
-    const teamModel: Model<Team> = model('Team', TeamSchema);
+    // const teamModel: Model<Team> = model('Team', TeamSchema);
 
     try {
       // const nhlTeams = await db
@@ -78,17 +78,19 @@ export class HockeyData {
             updateDate: new Date().toDateString(),
           };
         });
-      console.log('teams number !!!!', activeTeams.length);
 
-      for (const activeTeam of activeTeams) {
-        // let teamToInsert = new CreateTeamDto();
-        // teamToInsert = { ...activeTeam };
-        console.log('updated =>', activeTeam.label);
-        await this.teamService.create(activeTeam);
-        console.log('updated =>', activeTeam.label);
-      }
-      // if (NODE_ENV === "development") {
-      //   await writeJsonFile("./temporaryData/allTeamsNHL.json", { activeTeams });
+      // for (const activeTeam of activeTeams) {
+      //   // let teamToInsert = new CreateTeamDto();
+      //   // teamToInsert = { ...activeTeam };
+      //   let filter = { uniqueId: activeTeam.uniqueId };
+      //   let doc = { $push: { uniqueId: activeTeam.uniqueId } };
+      //   let options = { upsert: true };
+      //   // await this.teamService.create(filter, doc, options);
+      // }
+      // if (NODE_ENV === 'development') {
+      //   await writeJsonFile('./temporaryData/allTeamsNHL.json', {
+      //     activeTeams,
+      //   });
       // }
 
       // activeTeams.forEach(async (team: TeamType) => {
@@ -105,7 +107,7 @@ export class HockeyData {
       //     });
       // });
       // getNhlSchedule();
-
+      console.log('teams number !!!!', activeTeams[0].label);
       return activeTeams;
     } catch (error) {
       console.log('Error fetching data =>', error);
