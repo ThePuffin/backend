@@ -1,106 +1,78 @@
-// import { Games, Teams, db, eq } from 'astro:db';
 // import { writeJsonFile } from 'write-json-file';
 // import allTeamsFileMLB from '../../temporaryData/allTeamsMLB.json';
 // import allTeamsFileNBA from '../../temporaryData/allTeamsNBA.json';
 // import allTeamsFileNFL from '../../temporaryData/allTeamsNFL.json';
-// import type { GameFormatted } from '../interface/game.ts';
-// import type { MLBGameAPI } from '../interface/gameMLB.ts';
-// import type { NBAGameAPI } from '../interface/gameNBA.ts';
-// import type { NFLGameAPI } from '../interface/gameNFL.ts';
-// import type { ESPNTeam, TeamESPN, TeamType } from '../interface/teams.ts';
+// import type { GameFormatted } from '../interface/game';
+// import type { MLBGameAPI } from '../interface/gameMLB';
+// import type { NBAGameAPI } from '../interface/gameNBA';
+// import type { NFLGameAPI } from '../interface/gameNFL';
+import type { ESPNTeam, TeamESPN, TeamType } from '../interface/team';
 // import { isExpiredData, readableDate } from '../utils/date.js';
-// import { League } from './enum.ts';
+import { League } from '../enum';
 // import { getNBASchedule, filterGamesByTeam } from './nbaSchedule';
-// const { NODE_ENV } = process.env;
+const { NODE_ENV } = process.env;
 
-// const leaguesData = {
-//   [League.MLB]: {
-//     leagueName: League.MLB,
-//     fetchTeam: 'https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/teams',
-//     fetchGames: 'https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/teams/${id}/schedule',
-//   },
-//   [League.NBA]: {
-//     leagueName: League.NBA,
-//     fetchTeam: 'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams',
-//     fetchGames: 'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/${id}/schedule',
-//   },
-//   [League.NFL]: {
-//     leagueName: League.NFL,
-//     fetchTeam: 'https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams',
-//     fetchGames: 'https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/${id}/schedule',
-//   },
-// };
+const leaguesData = {
+  [League.MLB]: {
+    leagueName: League.MLB,
+    fetchTeam:
+      'https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/teams',
+    fetchGames:
+      'https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/teams/${id}/schedule',
+  },
+  [League.NBA]: {
+    leagueName: League.NBA,
+    fetchTeam:
+      'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams',
+    fetchGames:
+      'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/${id}/schedule',
+  },
+  [League.NFL]: {
+    leagueName: League.NFL,
+    fetchTeam:
+      'https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams',
+    fetchGames:
+      'https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/${id}/schedule',
+  },
+};
 
-// export const getTeams = async (leagueName: string) => {
-//   try {
-//     if (leagueName === League.NBA) {
-//       await getNBASchedule();
-//     }
+export const getESPNTeams = async (leagueName: string): Promise<TeamType[]> => {
+  try {
+    let allTeams: ESPNTeam[];
 
-//     const teams = await db.select().from(Teams).where(eq(Teams.league, leagueName));
-//     if (teams[0] && !isExpiredData(teams[0].updateDate)) {
-//       getTeamsSchedule(leagueName);
-//       return teams;
-//     }
-//     let allTeams: ESPNTeam[];
+    const fetchedTeams = await fetch(leaguesData[leagueName].fetchTeam);
+    const fetchTeams: TeamESPN = await fetchedTeams.json();
+    const { sports } = fetchTeams;
+    const { leagues } = sports[0];
+    allTeams = leagues[0].teams;
 
-//     const fetchedTeams = await fetch(leaguesData[leagueName].fetchTeam);
-//     const fetchTeams: TeamESPN = await fetchedTeams.json();
-//     const { sports } = fetchTeams;
-//     const { leagues } = sports[0];
-//     allTeams = leagues[0].teams;
+    const activeTeams: TeamType[] = allTeams
+      .filter(({ team }) => team.isActive)
+      .sort((a, b) => (a.team.slug > b.team.slug ? 1 : -1))
+      .map(({ team }) => {
+        const { abbreviation, displayName, logos, nickname, id } = team;
+        const teamID = abbreviation;
+        const uniqueId = `${leagueName}-${teamID}`;
+        return {
+          uniqueId,
+          value: uniqueId,
+          id: id,
+          abbrev: teamID,
+          label: displayName,
+          teamLogo: logos[0].href,
+          teamCommonName: nickname,
+          conferenceName: '',
+          divisionName: '',
+          league: leagueName,
+        };
+      });
 
-//     const activeTeams: TeamType[] = allTeams
-//       .filter(({ team }) => team.isActive)
-//       .sort((a, b) => (a.team.slug > b.team.slug ? 1 : -1))
-//       .map(({ team }) => {
-//         const { abbreviation, displayName, logos, nickname, id } = team;
-//         const teamID = abbreviation;
-//         const uniqueId = `${leagueName}-${teamID}`;
-//         return {
-//           uniqueId
-//           value: uniqueId
-//           id: id,
-//           abbrev: teamID,
-//           label: displayName,
-//           teamLogo: logos[0].href,
-//           teamCommonName: nickname,
-//           conferenceName: '',
-//           divisionName: '',
-//           league: leagueName,
-//         };
-//       });
-
-//     if (NODE_ENV === 'development') {
-//       await writeJsonFile(`./temporaryData/allTeams${leagueName}.json`, {
-//         activeTeams,
-//       });
-//       console.log(`updated allTeams${leagueName}.json`);
-//     }
-
-//     activeTeams.forEach(async (team: TeamType) => {
-//       const { uniqueIdteamData } = team;
-
-//       await db
-//         .insert(Teams)
-//         .values({ ...team })
-//         .onConflictDoUpdate({
-//           target: Teams.uniqueId
-//           set: {
-//             ...teamData,
-//           },
-//         });
-//     });
-//     getTeamsSchedule(leagueName);
-//     return activeTeams;
-//   } catch (error) {
-//     console.log('Error fetching data =>', error);
-//     getTeamsSchedule(leagueName);
-//     if (leagueName === League.NFL) return allTeamsFileNFL.activeTeams;
-//     if (leagueName === League.NBA) return allTeamsFileNBA.activeTeams;
-//     if (leagueName === League.MLB) return allTeamsFileMLB.activeTeams;
-//   }
-// };
+    return activeTeams;
+  } catch (error) {
+    console.log('Error fetching data =>', error);
+    return [];
+  }
+};
 
 // export const getTeamsSchedule = async (leagueName) => {
 //   const allGames = {};

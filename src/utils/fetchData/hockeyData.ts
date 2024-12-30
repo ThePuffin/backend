@@ -3,21 +3,17 @@
 // import allTeamsFile from "../../temporaryData/allTeamsNHL.json";
 // import type { GameFormatted } from "../interface/game.ts";
 // import type { NHLGameAPI } from "../../interface/gameNHL";
-import { CreateTeamDto } from '../../teams/dto/create-team.dto';
 import { TeamService } from '../../teams/teams.service';
 import type { TeamNHL, TeamType } from '../../utils/interface/team';
 // import { getHourGame, isExpiredData } from "../utils/date.js";
-import { Model, model } from 'mongoose';
-import { Team, TeamSchema } from 'src/teams/schemas/team.schema';
 import { League } from '../../utils/enum';
 const leagueName = League.NHL;
 const { NODE_ENV } = process.env;
 
 export class HockeyData {
   private readonly teamService: TeamService;
-  constructor() {}
 
-  async getNhlTeams() {
+  async getNhlTeams(): Promise<TeamType[]> {
     try {
       let allTeams: TeamNHL[];
 
@@ -67,12 +63,10 @@ export class HockeyData {
         });
 
       // getNhlSchedule();
-      console.log('teams number !!!!', activeTeams[0].label);
       return activeTeams;
     } catch (error) {
       console.log('Error fetching data =>', error);
-      // getNhlSchedule();
-      // return allTeamsFile.activeTeams;
+      return [];
     }
   }
 

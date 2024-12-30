@@ -2,16 +2,20 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Team } from './schemas/team.schema';
-
+import { League } from '../utils/enum';
 import { CreateTeamDto } from './dto/create-team.dto';
 import { UpdateTeamDto } from './dto/update-team.dto';
-import { HockeyData } from '../cronJob/utils/hockeyData';
+import { HockeyData } from '../utils/fetchData/hockeyData';
+import { getESPNTeams } from '../utils/fetchData/espnAllData';
+import { TeamType } from '../utils/interface/team';
 
 @Injectable()
 export class TeamService {
   constructor(@InjectModel(Team.name) public teamModel: Model<Team>) {}
 
-  async create(teamDto: CreateTeamDto | UpdateTeamDto): Promise<Team> {
+  async create(
+    teamDto: CreateTeamDto | UpdateTeamDto | TeamType,
+  ): Promise<Team> {
     const { uniqueId } = teamDto;
 
     if (uniqueId) {
@@ -29,6 +33,14 @@ export class TeamService {
   async getTeams(): Promise<any> {
     const hockeyData = new HockeyData();
     const activeTeams = await hockeyData.getNhlTeams();
+    const leagues = [League.NFL, League.NBA, League.MLB];
+    for (const league of leagues) {
+      const teams = await getESPNTeams(league);
+      if (teams.length) {
+        activeTeams.push(...teams);
+      }
+    }
+
     for (const activeTeam of activeTeams) {
       await this.create(activeTeam);
     }
@@ -41,11 +53,8 @@ export class TeamService {
   }
 
   async findOne(uniqueId: string) {
-    console.log('uniqueId', uniqueId);
     const filter = { uniqueId: uniqueId };
     const team = await this.teamModel.findOne(filter).exec();
-    console.log({ team });
-
     return team;
   }
 
