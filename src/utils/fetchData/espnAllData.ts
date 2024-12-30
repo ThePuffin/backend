@@ -19,6 +19,8 @@ const leaguesData = {
       'https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/teams',
     fetchGames:
       'https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/teams/${id}/schedule',
+    fetchDetails:
+      'https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/teams/',
   },
   [League.NBA]: {
     leagueName: League.NBA,
@@ -26,6 +28,8 @@ const leaguesData = {
       'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams',
     fetchGames:
       'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/${id}/schedule',
+    fetchDetails:
+      'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/',
   },
   [League.NFL]: {
     leagueName: League.NFL,
@@ -33,7 +37,36 @@ const leaguesData = {
       'https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams',
     fetchGames:
       'https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/${id}/schedule',
+    fetchDetails:
+      'https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/',
   },
+};
+
+const getDivision = async (
+  leagueName: string,
+  id: string,
+): Promise<{ conferenceName: string; divisionName: string }> => {
+  const url = leaguesData[leagueName].fetchDetails + id;
+  const fetchedTeams = await fetch(url);
+  const fetchTeams = await fetchedTeams.json();
+  const { standingSummary = '' } = fetchTeams.team;
+  const cut = standingSummary.split(' ');
+  if (leagueName === League.NFL) {
+    return { conferenceName: cut[3] || '', divisionName: cut[2] || '' };
+  } else if (leagueName === League.NBA) {
+    const divisionName = cut[2] || '';
+    const conference = {
+      Atlantic: 'East',
+      Central: 'East',
+      Northwest: 'West',
+      Pacific: 'West',
+    };
+    return { conferenceName: conference[divisionName] || '', divisionName };
+  } else if (leagueName === League.MLB) {
+    return { conferenceName: cut[3] || '', divisionName: cut[2] || '' };
+  } else {
+    return { conferenceName: '', divisionName: '' };
+  }
 };
 
 export const getESPNTeams = async (leagueName: string): Promise<TeamType[]> => {
@@ -67,9 +100,18 @@ export const getESPNTeams = async (leagueName: string): Promise<TeamType[]> => {
         };
       });
 
+    for (const team of activeTeams) {
+      const { conferenceName, divisionName } = await getDivision(
+        leagueName,
+        team.id,
+      );
+      team.conferenceName = conferenceName;
+      team.divisionName = divisionName;
+    }
+
     return activeTeams;
   } catch (error) {
-    console.log('Error fetching data =>', error);
+    console.error('Error fetching data =>', error);
     return [];
   }
 };
