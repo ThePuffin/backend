@@ -26,10 +26,10 @@ export class TeamsController {
     return this.TeamService.findOne(uniqueId);
   }
 
-  @Post()
-  async create(@Body() createTeamDto: CreateTeamDto) {
-    this.TeamService.create(createTeamDto);
-  }
+  // @Post()
+  // async create(@Body() createTeamDto: CreateTeamDto) {
+  //   this.TeamService.create(createTeamDto);
+  // }
 
   @Post('refresh')
   async refresh() {
@@ -42,6 +42,11 @@ export class TeamsController {
     @Body() updateTeamDto: UpdateTeamDto,
   ) {
     return this.TeamService.update(uniqueId, updateTeamDto);
+  }
+
+  @Delete('all')
+  removeAll() {
+    return this.TeamService.removeAll();
   }
 
   @Delete(':uniqueId')

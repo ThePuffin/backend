@@ -69,4 +69,13 @@ export class TeamService {
     const deleted = await this.teamModel.findOneAndDelete(filter).exec();
     return deleted;
   }
+
+  async removeAll() {
+    const teams = await this.teamModel.find().exec();
+    console.log({ teams });
+
+    for (const team of teams) {
+      await this.remove(team.uniqueId);
+    }
+  }
 }
